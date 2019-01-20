@@ -20,6 +20,6 @@ Return
 SendKey:
 	IfWinActive Counter-Strike: Global Offensive
 	{
-		Send n
+		Send {Blind}{F5}
 	}
 Return
