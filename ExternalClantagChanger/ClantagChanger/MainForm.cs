@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Linq;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -8,6 +10,12 @@ namespace ClantagChanger
 {
     public partial class MainForm : Form
     {
+        public static string[] defaultClantags = new string[]
+        {
+            "VACJOKE.NET",
+            "[VALVᴱ]"
+        };
+
         public Process currentProcess = null;
 
         public int index = 0, width = 8;
@@ -16,6 +24,19 @@ namespace ClantagChanger
         public MainForm()
         {
             InitializeComponent();
+            if(File.Exists("clantags.txt"))
+            {
+                try
+                {
+                    comboBox2.Items.Clear();
+                    comboBox2.Items.AddRange(ParseClantags(File.ReadAllText("clantags.txt",Encoding.UTF8)));
+                }
+                catch { }
+            }
+            if(comboBox2.Items.Count == 0)
+            {
+                comboBox2.Items.AddRange(defaultClantags);
+            }
         }
 
         private void MainForm_Load(object sender,EventArgs e)
@@ -56,10 +77,14 @@ namespace ClantagChanger
             {
                 MessageBox.Show(result,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-            index += Math.Max(0,comboBox4.SelectedIndex == 1 ? -1 : 1);
+            index += comboBox4.SelectedIndex == 1 ? -1 : 1;
             if(index >= frames.Count)
             {
                 index = 0;
+            }
+            if(index < 0)
+            {
+                index = frames.Count - 1;
             }
         }
 
@@ -100,10 +125,16 @@ namespace ClantagChanger
 
         private void button1_Click(object sender,EventArgs e)
         {
-            var form = new EditListForm();
+            var form = new EditListForm(string.Join("\r\n",comboBox2.Items.Cast<string>().ToArray()));
             if(form.ShowDialog() == DialogResult.OK)
             {
-                // TODO
+                comboBox2.Items.Clear();
+                comboBox2.Items.AddRange(ParseClantags(form.textBox1.Text));
+                if(comboBox2.Items.Count == 0)
+                {
+                    comboBox2.Items.AddRange(defaultClantags);
+                }
+                File.WriteAllText("clantags.txt",string.Join("\n",comboBox2.Items.Cast<string>().ToArray()),Encoding.UTF8);
             }
         }
 
@@ -119,6 +150,18 @@ namespace ClantagChanger
             {
                 MessageBox.Show(result,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+        }
+
+        public object[] ParseClantags(string raw)
+        {
+            return raw.Replace("\r","")
+                .Split('\n')
+                .Select(i => i.Replace("  "," ")
+                    .TrimStart()
+                    .TrimEnd())
+                .Where(i => i != "")
+                .Select(i => (object)i)
+                .ToArray();
         }
 
         public void BuildFrames()
