@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Text;
 using System.Runtime.InteropServices;
 
 namespace ClantagChanger
 {
     public static class NTAPI
     {
-        public const int NT_SUCCESS = 0;
-
-        public static uint STATUS_SUCCESS = 0x00000000;
-        public static uint STATUS_INFO_LENGTH_MISMATCH = 0xC0000004;
-
-        public delegate bool CallBack(int hwnd,int lParam);
-
         #region Signatures
 
         #region kernel32.dll

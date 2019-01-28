@@ -13,6 +13,10 @@ namespace ClantagChanger
 
         public static string SetClantag(Process process,string tag,string name)
         {
+            if(process == null || process.HasExited)
+            {
+                return null;
+            }
             IntPtr hProcess = process.Handle;
             ProcessModule engineDll = null;
             foreach(ProcessModule module in process.Modules)
