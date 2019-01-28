@@ -4,10 +4,10 @@ A simple project provides you with some clantag changers.
 ## Can I get VAC BANNED if I use these scripts?
 - If you just use the *CSGO Biniding Based Changer*,it's impossible for you to recieve a VAC ban by using this script.
 - If you use the *AutoHotKey Based Changer*,you have a really small chance to recieve a ban,I don't know if vac will detect AHK,AHK didn't caused any ban for me.
-- If you use the *External Clantag Changer*,**it is _POSSIBLE_ for you to recieve a _VAC BAN_**,the external changer will have some actions that only hacks will do and **THERE'S NO ANTI DETECT MEASURES**
+- If you use the *External Clantag Changer*,**_YOU MAY RECIEVE A VAC BAN_**,the external changer will have some actions that only hacks will do and **THERE'S NO ANTI DETECT MEASURES**.
 
 ## Pre-Requirements
-- If you want to use the external changer,just make sure you have `.NET Framework 4.5` installed
+- If you want to use the external changer,just make sure you have `.NET Framework 4.5` installed,there's no need to join the following steam groups.
 - In order to use the clantag changer,you must join **ALL OF** the following groups:
  - [VACJOKE\_1](https://steamcommunity.com/groups/VACJOKE_1)
  - [VACJOKE\_2](https://steamcommunity.com/groups/VACJOKE_2)
@@ -24,20 +24,27 @@ A simple project provides you with some clantag changers.
 
 ## Usage
 ### CSGO Biniding Based Changer
-1. Download the [vacjoke.cfg](https://github.com/fengberd/VACJOKE.NET/raw/master/vacjoke.cfg)
-2. Modify key bindings at the bottom of the file.
+1. Download [BinidingBased.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.0/BinidingBased.zip) and extract it
+2. Modify key bindings at the bottom of the file if you want.
 3. Copy the cfg file to `Steam/steamapps/common/Counter-Strike Global Offensive/csgo/cfg` folder
 4. Open your game and open console
 5. Type `exec vacjoke` and enjoy! :hammer:
 
 ### AutoHotKey Based Changer
-1. Download the [vacjoke_ahk.cfg](https://github.com/fengberd/VACJOKE.NET/raw/master/vacjoke_ahk.cfg) and [vacjoke.ahk](https://github.com/fengberd/VACJOKE.NET/raw/master/vacjoke.ahk)
-2. Check the key bindings at the bottom of these files,make sure there's no conflicts(Default key is `N`).
+1. Download [AutoHotKeyBased.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.0/AutoHotKeyBased.zip) and extract it.
+2. Check the key bindings at the bottom of these files,make sure there's no conflicts(Default key is `F5`).
 3. Run `vacjoke.ahk`
 4. Copy the cfg file to `Steam/steamapps/common/Counter-Strike Global Offensive/csgo/cfg` folder
 5. Open your game and open console
 6. Type `exec vacjoke_ahk`
-7. Join any game and press `F2` to start the script! :hammer:
+7. Join any game and press `F3` to start the script! :hammer:
 
 ### External Clantag Changer
-- Unavailable at the moment
+**YOU MAY GET BANNED,USE THIS AT YOUR OWN RISK**
+
+**YOU HAVE BEEN WARNED**
+
+1. Download [ExternalClantagChanger.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.0/ExternalClantagChanger.zip) and extract it.
+2. Run `ClantagChanger.exe` and enjoy :)
+
+// Don't tell me you don't know how to use it
