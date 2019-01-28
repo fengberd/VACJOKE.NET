@@ -47,7 +47,7 @@ namespace ClantagChanger
 
         private void timer2_Tick(object sender,EventArgs e)
         {
-            if(frames.Count==0)
+            if(frames.Count == 0)
             {
                 return;
             }
@@ -57,7 +57,7 @@ namespace ClantagChanger
                 MessageBox.Show(result,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             index += Math.Max(0,comboBox4.SelectedIndex == 1 ? -1 : 1);
-            if(index>=frames.Count)
+            if(index >= frames.Count)
             {
                 index = 0;
             }
@@ -101,7 +101,7 @@ namespace ClantagChanger
         private void button1_Click(object sender,EventArgs e)
         {
             var form = new EditListForm();
-            if(form.ShowDialog()==DialogResult.OK)
+            if(form.ShowDialog() == DialogResult.OK)
             {
                 // TODO
             }
@@ -110,7 +110,7 @@ namespace ClantagChanger
         private void button2_Click(object sender,EventArgs e)
         {
             comboBox2.Text = comboBox2.Text.Replace("  "," ").TrimStart().TrimEnd();
-            if(comboBox2.Text=="")
+            if(comboBox2.Text == "")
             {
                 return;
             }
@@ -123,14 +123,14 @@ namespace ClantagChanger
 
         public void BuildFrames()
         {
-            var tag = comboBox2.Text = comboBox2.Text.Replace("  "," ").TrimStart().TrimEnd()+" ";
+            var tag = comboBox2.Text = comboBox2.Text.Replace("  "," ").TrimStart().TrimEnd() + " ";
             frames.Clear();
             switch(comboBox3.SelectedIndex)
             {
             case 0: // Scroll
                 if(width >= tag.Length)
                 {
-                    for(int i=0;i< tag.Length;i++)
+                    for(int i = 0;i < tag.Length;i++)
                     {
                         frames.Add(tag.Substring(i) + tag.Substring(0,i));
                     }
@@ -154,11 +154,22 @@ namespace ClantagChanger
             case 1: // Spell
                 for(int i = 0;i < tag.Length;i++)
                 {
-                    frames.Add(tag.Substring((int)Math.Floor((double)i / width) * width,i % width+1));
+                    if(i % width == 0)
+                    {
+                        frames.Add("");
+                    }
+                    frames.Add(tag.Substring((int)Math.Floor((double)i / width) * width,i % width + 1));
                 }
                 break;
             case 2: // Process
-                // TODO
+                for(int i = 0;i < tag.Length;i++)
+                {
+                    if(i % width == 0)
+                    {
+                        frames.Add(new string('.',Math.Min(width,tag.Length)));
+                    }
+                    frames.Add(tag.Substring((int)Math.Floor((double)i / width) * width,i % width + 1).PadRight(Math.Min(width,tag.Length),'.'));
+                }
                 break;
             case 3: // Switch All
                 frames.AddRange(comboBox2.Items.Cast<object>().Select(i => i.ToString()));
