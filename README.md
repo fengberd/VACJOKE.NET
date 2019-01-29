@@ -24,14 +24,14 @@ A simple project provides you with some clantag changers.
 
 ## Usage
 ### CSGO Biniding Based Changer
-1. Download [BinidingBased.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.0/BinidingBased.zip) and extract it
+1. Download [BinidingBased.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.0/BinidingBased_v1.0.0.zip) and extract it
 2. Modify key bindings at the bottom of the file if you want.
 3. Copy the cfg file to `Steam/steamapps/common/Counter-Strike Global Offensive/csgo/cfg` folder
 4. Open your game and open console
 5. Type `exec vacjoke` and enjoy! :hammer:
 
 ### AutoHotKey Based Changer
-1. Download [AutoHotKeyBased.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.0/AutoHotKeyBased.zip) and extract it.
+1. Download [AutoHotKeyBased.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.0/AutoHotKeyBased_v1.0.0.zip) and extract it.
 2. Check the key bindings at the bottom of these files,make sure there's no conflicts(Default key is `F5`).
 3. Run `vacjoke.ahk`
 4. Copy the cfg file to `Steam/steamapps/common/Counter-Strike Global Offensive/csgo/cfg` folder
@@ -44,7 +44,7 @@ A simple project provides you with some clantag changers.
 
 **YOU HAVE BEEN WARNED**
 
-1. Download [ExternalClantagChanger.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.0/ExternalClantagChanger.zip) and extract it.
+1. Download [ExternalClantagChanger.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.1/ExternalClantagChanger_v1.0.1.zip) and extract it.
 2. Run `ClantagChanger.exe` and enjoy :)
 
 // Don't tell me you don't know how to use it
