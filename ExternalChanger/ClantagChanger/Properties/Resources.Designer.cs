@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NameChanger.Properties
+namespace ClantagChanger.Properties
 {
 
 

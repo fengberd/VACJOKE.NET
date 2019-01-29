@@ -3,9 +3,9 @@ using System.IO;
 using System.Text;
 using System.Diagnostics;
 
-using static NameChanger.NTAPI;
+using static ClantagChanger.NTAPI;
 
-namespace NameChanger
+namespace ClantagChanger
 {
     public static class Utils
     {

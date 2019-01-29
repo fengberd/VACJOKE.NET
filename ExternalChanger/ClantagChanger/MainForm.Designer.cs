@@ -1,4 +1,4 @@
-﻿namespace NameChanger
+﻿namespace ClantagChanger
 {
     partial class MainForm
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace NameChanger
+namespace ClantagChanger
 {
     public static class NTAPI
     {
