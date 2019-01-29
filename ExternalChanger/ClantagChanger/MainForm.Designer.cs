@@ -37,6 +37,8 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,8 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -89,8 +89,7 @@
             // 
             // timer2
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 1000;
+            this.timer2.Interval = 800;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // comboBox2
@@ -128,6 +127,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Animated Clantag";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(196, 46);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(48, 21);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.Text = "8";
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(149, 49);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Width:";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -142,8 +159,8 @@
             this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
-            "Left->Right",
-            "Right->Left"});
+            "Normal",
+            "Reversed"});
             this.comboBox4.Location = new System.Drawing.Point(220, 20);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(96, 20);
@@ -211,24 +228,6 @@
             this.button2.Text = "Set Clantag";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(196, 46);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(48, 21);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.Text = "8";
-            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(149, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Width:";
             // 
             // label7
             // 
