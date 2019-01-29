@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace ClantagChanger
+namespace NameChanger
 {
     public partial class MainForm : Form
     {

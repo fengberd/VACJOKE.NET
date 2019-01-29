@@ -3,7 +3,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-namespace ClantagChanger
+namespace NameChanger
 {
     public class SigScan
     {

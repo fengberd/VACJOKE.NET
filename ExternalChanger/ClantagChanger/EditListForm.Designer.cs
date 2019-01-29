@@ -1,4 +1,4 @@
-﻿namespace ClantagChanger
+﻿namespace NameChanger
 {
     partial class EditListForm
     {

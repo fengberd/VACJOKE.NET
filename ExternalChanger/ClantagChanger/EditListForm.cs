@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ClantagChanger
+namespace NameChanger
 {
     public partial class EditListForm : Form
     {
