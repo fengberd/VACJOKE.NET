@@ -70,8 +70,9 @@ namespace ClantagChanger
         {
             lock(frames)
             {
-                if(frames.Count == 0)
+                if(frames.Count == 0 || Utils.ReadGameStatus(currentProcess) != 6)
                 {
+                    checkBox1.Checked = false;
                     return;
                 }
                 var result = Utils.SetClantag(currentProcess,frames[index],frames[index]);
@@ -93,9 +94,16 @@ namespace ClantagChanger
 
         private void checkBox1_CheckedChanged(object sender,EventArgs e)
         {
+            var result = Utils.LoadData(currentProcess);
+            if(result != null)
+            {
+                MessageBox.Show(result,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
             BuildFrames();
             timer2.Enabled = checkBox1.Checked;
             button1.Enabled = button2.Enabled = comboBox2.Enabled = !checkBox1.Checked;
+            index = 0;
         }
 
         private void textBox1_Leave(object sender,EventArgs e)
@@ -149,7 +157,13 @@ namespace ClantagChanger
             {
                 return;
             }
-            var result = Utils.SetClantag(currentProcess,comboBox2.Text,comboBox2.Text);
+            var result = Utils.LoadData(currentProcess);
+            if(result != null)
+            {
+                MessageBox.Show(result,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            result = Utils.SetClantag(currentProcess,comboBox2.Text,comboBox2.Text);
             if(result != null)
             {
                 MessageBox.Show(result,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);

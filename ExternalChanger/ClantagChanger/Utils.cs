@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 using static ClantagChanger.NTAPI;
 
@@ -11,7 +12,34 @@ namespace ClantagChanger
     {
         public const int MAX_TEXT_SIZE = 15;
 
-        public static string SetClantag(Process process,string tag,string name)
+        public static int fnClantagChanged, dwIsInGame;
+        public static IntPtr dwClientState;
+
+
+        public static byte[] ReadMemory(IntPtr hProcess,IntPtr address,int length)
+        {
+            byte[] data = new byte[length];
+            if(!ReadProcessMemory(hProcess,address,data,data.Length,out IntPtr unused))
+            {
+                return null;
+            }
+            return data;
+        }
+
+        public static T ReadMemory<T>(IntPtr hProcess,IntPtr address)
+        {
+            var data = ReadMemory(hProcess,address,Marshal.SizeOf(typeof(T)));
+            if(data == null)
+            {
+                return default(T);
+            }
+            var handle = GCHandle.Alloc(data,GCHandleType.Pinned);
+            var result = (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(),typeof(T));
+            handle.Free();
+            return result;
+        }
+
+        public static string LoadData(Process process)
         {
             if(process == null || process.HasExited)
             {
@@ -32,17 +60,49 @@ namespace ClantagChanger
             {
                 return "Failed to get base address of engine.dll";
             }
-
             var scanner = new SigScan(hProcess);
             if(!scanner.SelectModule(engineDll.BaseAddress,engineDll.ModuleMemorySize))
             {
-                return "Failed to select module";
+                return "Failed to select engine.dll";
             }
-            int fnClantagChanged = (int)scanner.FindPattern("53 56 57 8B DA 8B F9 FF 15",out long time);
-            if(fnClantagChanged == 0)
+            // Find fnClantagChanged
+            int scan = (int)scanner.FindPattern("53 56 57 8B DA 8B F9 FF 15",out long time);
+            if(scan == 0)
             {
-                return "Failed to scan fnClantagChanged";
+                return "Can't find fnClantagChanged";
             }
+            fnClantagChanged = scan;
+            // Find dwClientState
+            scan = (int)scanner.FindPattern("A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0",out time);
+            if(scan == 0)
+            {
+                return "Can't find dwClientState";
+            }
+            dwClientState = ReadMemory<IntPtr>(hProcess,new IntPtr(scan + 1));
+            // Find dwIsInGame
+            scan = (int)scanner.FindPattern("83 B8 ? ? ? ? ? 0F 94 C0 C3",out time);
+            if(scan == 0)
+            {
+                return "Can't find dwClientState";
+            }
+            dwIsInGame = ReadMemory<int>(hProcess,new IntPtr(scan + 2));
+            return null;
+        }
+
+        public static int ReadGameStatus(Process process)
+        {
+            IntPtr hProcess = process.Handle;
+            int CClientState = ReadMemory<int>(hProcess,dwClientState);
+            return ReadMemory<int>(hProcess,new IntPtr(CClientState + dwIsInGame));
+        }
+
+        public static string SetClantag(Process process,string tag,string name)
+        {
+            if(process == null || process.HasExited)
+            {
+                return null;
+            }
+            IntPtr hProcess = process.Handle;
 
             byte[] shellCode = new byte[]
             {
