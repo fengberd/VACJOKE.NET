@@ -43,8 +43,9 @@ A simple project provides you with some clantag changers.
 **YOU MAY GET BANNED,USE THIS AT YOUR OWN RISK**
 
 **YOU HAVE BEEN WARNED**
+Note: Please make sure your clantag changer is disable when you're joining a server or selecting team,otherwise you will stuck at "Sending client info" or unable to select the team.The changer will disable itself automaticlly when the game ends.
 
-1. Download [ExternalClantagChanger.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.1/ExternalClantagChanger_v1.0.1.zip) and extract it.
+1. Download [ExternalClantagChanger.zip](https://github.com/fengberd/VACJOKE.NET/releases/download/v1.0.1/ExternalClantagChanger_v1.0.2.zip) and extract it.
 2. Run `ClantagChanger.exe` and enjoy :)
 
 // Don't tell me you don't know how to use it
