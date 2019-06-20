@@ -70,7 +70,7 @@ namespace ClantagChanger
         {
             lock(frames)
             {
-                if(frames.Count == 0 || Utils.ReadGameStatus(currentProcess) != 6)
+                if(frames.Count == 0 || currentProcess == null || Utils.ReadGameStatus(currentProcess) != 6)
                 {
                     checkBox1.Checked = false;
                     return;
