@@ -238,6 +238,42 @@ namespace ClantagChanger
                 case 3: // Switch All
                     frames.AddRange(comboBox2.Items.Cast<object>().Select(i => i.ToString()));
                     break;
+                case 4: // Scroll New
+                    if(width >= tag.Length)
+                    {
+                        for(int i = tag.Length;i >= 0;i--)
+                        {
+                            frames.Add(tag.Substring(i));
+                        }
+                        var reversed = new List<string>(frames);
+                        reversed.Reverse();
+                        frames.AddRange(reversed);
+                    }
+                    else
+                    {
+                        for(int seg = 0;seg < Math.Ceiling((double)tag.Length / width);seg++)
+                        {
+                            string segment;
+                            if((seg + 1) * width > tag.Length)
+                            {
+                                segment = tag.Substring(seg * width);
+                            }
+                            else
+                            {
+                                segment = tag.Substring(seg * width,width);
+                            }
+                            var temp = new List<string>();
+                            for(int i = segment.Length;i >= 0;i--)
+                            {
+                                temp.Add(segment.Substring(i));
+                            }
+                            var reversed = new List<string>(temp);
+                            reversed.Reverse();
+                            frames.AddRange(temp);
+                            frames.AddRange(reversed);
+                        }
+                    }
+                    break;
                 }
             }
         }

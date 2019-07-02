@@ -183,7 +183,8 @@
             "Scroll",
             "Spell",
             "Process",
-            "Switch All"});
+            "Switch All",
+            "Scroll New"});
             this.comboBox3.Location = new System.Drawing.Point(47, 20);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(96, 20);
